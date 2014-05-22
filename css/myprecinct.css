@@ -1,0 +1,41 @@
+@media (min-width: 1900px) {
+    .container {
+        width: 1870px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        width: 1570px;
+    }
+}
+
+body {
+    /* Original design based on http://subtlepatterns.com/ */
+    background-image: url('../images/congruent_pentagon_dkblue.png');
+}
+
+h1 {
+    color: #fff;
+}
+
+.splash {
+    margin-top: 40px;
+}
+
+#map {
+    height: 640px;
+}
+
+.btn-xl {
+    padding: 20px 16px;
+    font-size: 24px;
+}
+
+.navbtn {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
