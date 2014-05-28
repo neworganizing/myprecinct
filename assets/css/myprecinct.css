@@ -12,10 +12,18 @@
 
 body {
     /* Original design based on http://subtlepatterns.com/ */
-    background-image: url('../images/congruent_pentagon_dkblue.png');
+    background-image: url('/static/images/congruent_pentagon_dkblue.png');
 }
 
 h1 {
+    color: #fff;
+}
+
+h6 > a {
+    color: #fff;
+}
+
+#electeds > h4, h6 {
     color: #fff;
 }
 
@@ -38,8 +46,4 @@ h1 {
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-}
-
-#electeds {
-    display: none;
 }
