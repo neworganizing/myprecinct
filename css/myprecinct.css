@@ -39,3 +39,7 @@ h1 {
     margin-left: auto;
     margin-right: auto;
 }
+
+#electeds {
+    display: none;
+}
