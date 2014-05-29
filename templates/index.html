@@ -244,7 +244,28 @@
                         }
                     };
 
+                    var resource_point = [L.circle([38.7826967,-77.1187117], 30, {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5
+                    }),
+                    L.circle([38.7837212,-77.1216407], 30, { 
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5
+                    })
+                    ]
+
                     L.geoJson(precinct_shape).addTo(map);
+
+                    // NOTE: These points must be added AFTER the precinct polygon,
+                    //    otherwise they will be *under* the polygon and clicking them won't do anything.
+
+                    resource_point[0].addTo(map);
+                    resource_point[1].addTo(map);
+
+                    resource_point[0].bindPopup('Campaign Office');
+                    resource_point[1].bindPopup('Register to Vote');
 
                     map.panTo(new L.LatLng(38.778393,-77.114285));
                     map.setZoom(15);
