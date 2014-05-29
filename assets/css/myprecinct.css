@@ -1,30 +1,57 @@
-@media (min-width: 1900px) {
-    .container {
-        width: 1870px;
-    }
-}
-
-@media (min-width: 1600px) {
-    .container {
-        width: 1570px;
-    }
-}
-
 body {
     /* Original design based on http://subtlepatterns.com/ */
     background-image: url('/static/images/congruent_pentagon_dkblue.png');
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+header {
+    margin-top: 10px;
+    padding: 10px 40px;
+    background: rgba(0, 0, 0, 0.4);
 }
 
 h1 {
     color: #fff;
 }
 
-h6 > a {
-    color: #fff;
+h4, p {
+    margin: 0 0.5em;
 }
 
-#electeds > h4, h6 {
-    color: #fff;
+h4 {
+    font-size: 125%;
+}
+
+hr {
+    margin: 0.5em 0;
+}
+
+span.subtitle {
+    font-size: 65%;
+}
+
+#menu {
+    margin-left: -16px;
+    background: rgba(0, 0, 0, 0.4);
+    height: 640px;
+}
+
+#electeds {
+    font-size: 85%;
+    margin-top: -10px;
+    background: #2990C7;
+    border: 1px solid #000062;
+    color: #FFF;
+    padding: 10px;
+}
+
+#electeds a {
+    color: #CCC;
 }
 
 .splash {
@@ -42,8 +69,49 @@ h6 > a {
 
 .navbtn {
     display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 10px;
+    width: 100%;
+}
+
+#address-form {
+    text-align: right;
+}
+
+#address-form label {
+    color: #FFF;
+}
+
+.initial-hide {
+    display: none;
+}
+/*@media (min-width: 1900px) {
+    .container {
+        width: 1870px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        width: 1570px;
+    }
+}*/
+@media (max-width: 1200px) {
+    header {
+        text-align: center;
+    }
+
+    #menu {
+        margin-left: 0px;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hidden-phone {
+        display: none;
+    }
+
+    #map {
+        height: 320px;
+    }
 }

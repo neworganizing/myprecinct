@@ -30,46 +30,99 @@
 <body>
   <div class="container" id="mainbody">
 
-  <h1 style="margin-left: 40px;">My Precinct</h1>
+  <div class="row">
+  <div class="col-lg-12 clearfix">
+    <header>
+      <div class="row">
+      <div class="col-lg-9">
+        <h1>MyPrecinct <span class="subtitle initial-hide"><span class="hidden-phone">- </span>410 Rose Hill - 8th CD - Fairfax Co, VA</span></h1>
+      </div>
+      <div class="col-lg-3">
+        <form id="address-form">
+          <label>Address</label>
+          <input type="text" />
+          <button type="submit" onclick="show_address(); return false;">Submit</button>
+        </form>
+      </div>
+      </div>
+    </header>
+  </div>
   
-  <div class="col-lg-9">
-    <div id="map" class="img-responsive"></div>
+  <div class="col-lg-10">
+    <div id="map-container">
+      <div id="map" class="img-responsive"></div>
+    </div>
   </div>
 
-  <div class="col-lg-3">
-    <button class="btn btn-lg btn-info navbtn" onclick="toggle_visibility('electeds');">My Elected Officials</button>
-      <div id="electeds" style="display: none;">
+  <div id="menu" class="col-lg-2 initial-hide">
+    <button class="btn btn-lg btn-info navbtn" onclick="toggle_visibility('electeds');">
+      My Elected Officials
+    </button>
+    
+    <div id="electeds" style="display: none;">
         <h4>Senator Mark Warner</h4>
-        <h6><a href="http://www.warner.senate.gov/" target="_blank">http://www.warner.senate.gov/</a></h6>
-        <h6><a href="tel:202-224-2023">202-224-2023</a></h6>
-          <br>
+        <p>
+          <a href="http://www.warner.senate.gov/" target="_blank">http://www.warner.senate.gov/</a>
+        </p>
+        <p>
+          <a href="tel:202-224-2023">202-224-2023</a>
+        </p>
+
+        <hr />
+        
         <h4>Senator Tim Kaine</h4>
-        <h6><a href="http://www.kaine.senate.gov/" target="_blank">http://www.kaine.senate.gov/</a></h6>
-        <h6><a href="tel:202-224-4024">202-224-4024</a></h6>
-          <br>
+        <p>
+          <a href="http://www.kaine.senate.gov/" target="_blank">http://www.kaine.senate.gov/</a>
+        </p>
+        
+        <p>
+          <a href="tel:202-224-4024">202-224-4024</a>
+        </p>
+
+        <hr />
+
         <h4>Representative Jim Moran, Jr.</h4>
-        <h6><a href="https://moran.house.gov/" target="_blank">https://moran.house.gov/</a></h6>
-        <h6><a href="tel:202-225-4376">202-225-4376</a></h6>
-      </div>
-    <button class="btn btn-lg btn-success navbtn" data-toggle="modal" data-target="#commit_vote">
-    <span class="glyphicon glyphicon-ok"></span> Commit to Vote</button> 
+        <p>
+          <a href="https://moran.house.gov/" target="_blank">https://moran.house.gov/</a>
+        </p>
+        
+        <p>
+          <a href="tel:202-225-4376">202-225-4376</a>
+        </p>
+    </div>
+
+    <button id="commit-button" class="btn btn-lg btn-success navbtn" data-toggle="modal" data-target="#commit-vote">
+      <span class="glyphicon glyphicon-ok"></span> Commit to Vote
+    </button>
+    
     <button class="btn btn-lg btn-info navbtn">Sign up to Help</button>
+    
     <button class="btn btn-lg btn-info navbtn">
-    <i class="fa fa-facebook-square"></i> 
-    <i class="fa fa-twitter"></i>
-     Connect</button>
+      <i class="fa fa-facebook-square"></i> 
+      <i class="fa fa-twitter"></i>
+      Connect
+    </button>
+
     <!-- <button class="btn btn-lg btn-info navbtn">Election Calendar</button> -->
     <!-- <button class="btn btn-lg btn-info navbtn">Important Resources</button> -->
-    <!-- <button class="btn btn-lg btn-info navbtn">Resource Library</button> -->
-    <a href="http://ogea.neworganizing.com/guide/VA" target="_blank"><button class="btn btn-lg btn-primary navbtn">
-    <span class="glyphicon glyphicon-question-sign"></span> Voting FAQs</button></a>
-    <br>
-    <button class="btn btn-lg btn-danger navbtn"><span class="glyphicon glyphicon-edit"></span> Change Location</button>
+    <button class="btn btn-lg btn-info navbtn">Resource Library</button>
+    <a href="http://ogea.neworganizing.com/guide/VA" target="_blank">
+      <button class="btn btn-lg btn-primary navbtn">
+        <span class="glyphicon glyphicon-question-sign"></span> Voting FAQs
+      </button>
+    </a>
+
+    <br />
+
+    <button class="btn btn-lg btn-danger navbtn">
+      <span class="glyphicon glyphicon-edit"></span> Change Location
+    </button>
+  </div>
   </div>
 
   <!-- Commit to Vote Modal -->
 
-  <div class="modal fade" id="commit_vote">
+  <div class="modal fade" id="commit-vote">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -89,11 +142,13 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" aria-hidden="true"><span class="glyphicon glyphicon-calendar"></span> Add to Calendar</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-ok"></span> I'll be there</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="update_commit_btn();" aria-hidden="true">
+              <span class="glyphicon glyphicon-ok"></span> I'll be there
+          </button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+  </div><!-- /.modal -->  
 
   <!-- End: Commit to Vote Modal -->
 
@@ -103,27 +158,67 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 
     <script>
+        function show_address() {
+          var hidden_elements = $('.initial-hide')
 
-        // Coordinates here are for the White House; preload these as appropriate
+          hidden_elements.each(function(e) {
+            $(this).slideDown();
+          });
 
-        var map = L.map('map').setView([38.7742336, -77.1114619], 15);
+          // Markers go here
+
+          var you_are_here = L.marker([38.778393,-77.114285]).addTo(map);
+          var polling_place = L.marker([38.7814246, -77.1173771]).addTo(map);
+
+          // Polygons go here
+          // Instructions on building a polygon here: http://leafletjs.com/examples/quick-start.html
+
+          you_are_here.bindPopup("You are here!").openPopup();
+          polling_place.bindPopup("Here's where you will vote!").openPopup();
+
+          var precinct_shape = {
+            "type": "Feature",
+            "properties": {
+              "FIPS": 51059,
+              "PRECINCT": "410",
+              "NAME": "ROSE HILL",
+              "LOCALITY": "FAIRFAX COUNTY"
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [[
+                [ -77.110841691680434, 38.789186487728408 ],
+                [ -77.108827533493496, 38.785868487463901 ],
+                [ -77.093270770155158, 38.785955065807698 ],
+                [ -77.102376987260882, 38.782595477886581 ],
+                [ -77.109844322159361, 38.775450954024457 ],
+                [ -77.121209350652933, 38.767282247747474 ],
+                [ -77.121508219690966, 38.767131347469942 ],
+                [ -77.123906260230939, 38.766027352499172 ],
+                [ -77.131986804261388, 38.772755567727472 ],
+                [ -77.134879183973467, 38.775468808877832 ],
+                [ -77.135967676032408, 38.784016643167917 ],
+                [ -77.127424409275349, 38.784022693800253 ],
+                [ -77.116789403589522, 38.789166159452513 ],
+                [ -77.110841691680434, 38.789186487728408 ]
+              ]]
+            }
+          };
+
+          L.geoJson(precinct_shape).addTo(map);
+
+          map.panTo(new L.LatLng(38.778393,-77.114285));
+          map.setZoom(15);
+        }
+
+        // Coordinates of random house in Precinct 103
+        var map = L.map('map').setView([37.431576,-78.656799], 8);
+        //var map = L.map('map').setView([38.778393,-77.114285], 15);
 
         L.tileLayer('http://{s}.tiles.mapbox.com/v3/shannonturner.ia66964h/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18
-    }).addTo(map);
-
-        // Markers go here
-
-        var you_are_here = L.marker([38.7742336, -77.1114619]).addTo(map);
-        var polling_place = L.marker([38.7814246, -77.1173771]).addTo(map);
-
-        // Polygons go here
-        // Instructions on building a polygon here: http://leafletjs.com/examples/quick-start.html
-
-        you_are_here.bindPopup("You are here").openPopup();
-        polling_place.bindPopup("You will vote here").openPopup();
-
+          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+          maxZoom: 18
+        }).addTo(map);
     </script>
 
     <!-- Toggle show/hide elements -->
@@ -135,6 +230,11 @@
               e.style.display = 'none';
            else
               e.style.display = 'block';
+        }
+
+        function update_commit_btn() {
+            $('#commit-button').html("You've Committed to Vote!");
+            $('#commit-vote modal-footer').hide();
         }
     //-->
     </script>
