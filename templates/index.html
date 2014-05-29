@@ -100,12 +100,12 @@
                 </p>
         </div>
 
-        <button id="commit-button" class="btn btn-lg btn-success navbtn" data-toggle="modal" data-target="#commit-vote">
-            <span class="glyphicon glyphicon-ok"></span> Commit to Vote
+        <button id="commit-button" class="btn btn-lg btn-info navbtn" data-toggle="modal" data-target="#commit-vote">
+           Commit to Vote
         </button>
         
-        <button class="btn btn-lg btn-info navbtn">Sign up to Help</button>
-        
+        <button id="signup-button" class="btn btn-lg btn-info navbtn" data-toggle="modal" data-target="#signup-help">Sign up to Help</button>
+            
         <button class="btn btn-lg btn-info navbtn">
             <i class="fa fa-facebook-square"></i> 
             <i class="fa fa-twitter"></i>
@@ -115,7 +115,7 @@
         <!-- <button class="btn btn-lg btn-info navbtn">Election Calendar</button> -->
         <!-- <button class="btn btn-lg btn-info navbtn">Important Resources</button> -->
         <button class="btn btn-lg btn-info navbtn">Resource Library</button>
-        <a href="http://ogea.neworganizing.com/guide/VA" target="_blank">
+        <a href="http://ogea.neworganizing.com/guide/VA" target="_blank" style="text-decoration: none;">
             <button class="btn btn-lg btn-primary navbtn">
                 <span class="glyphicon glyphicon-question-sign"></span> Voting FAQs
             </button>
@@ -160,6 +160,34 @@
     </div><!-- /.modal -->  
 
     <!-- End: Commit to Vote Modal -->
+
+    <!-- Sign up to Volunteer Modal -->
+
+    <div class="modal fade" id="signup-help">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title">Sign up to Help</h3>
+          </div>
+          <div class="modal-body">
+            <p><h4>I would like to be a ... </h4> <br>
+              <button class="btn btn-lg btn-default navbtn" onclick="$(this).toggleClass('btn-default btn-success');">Canvasser</button>
+              <button class="btn btn-lg btn-default navbtn" onclick="$(this).toggleClass('btn-default btn-success');">Phonebanker</button>
+              <br>
+              <button class="btn btn-lg btn-default navbtn" onclick="$(this).toggleClass('btn-default btn-success');">Pollworker</button>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="update_vol_btn();" aria-hidden="true">
+                <span class="glyphicon glyphicon-ok"></span> Sign me up!
+            </button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->  
+
+    <!-- End: Sign up to Volunteer Modal -->
 
     </div> <!-- #mainbody -->
 
@@ -244,9 +272,15 @@
                 }
 
                 function update_commit_btn() {
-                        $('#commit-button').html("You've Committed to Vote!");
-                        $('#commit-vote modal-footer').hide();
-                }
+                  $('#commit-button').html('<span class="glyphicon glyphicon-ok"></span> Committing to Vote!');
+                  $('#commit-vote modal-footer').hide();
+                  $("#commit-button").toggleClass('btn-info btn-success');
+              }
+
+              function update_vol_btn() {
+                  $('#signup-button').html('<span class="glyphicon glyphicon-ok"></span> Signed up to help!');
+                  $("#signup-button").toggleClass('btn-info btn-success');
+              }
         //-->
         </script>
 
