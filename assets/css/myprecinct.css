@@ -89,6 +89,11 @@ form#address-form label {
     width: 100%;
 }
 
+#polling_place {
+    color: #fff;
+    text-align: right;
+}
+
 .initial-hide {
     display: none;
 }

@@ -20,8 +20,6 @@
         <title>My Precinct</title>
 
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-        <!-- I get an invalid block tag: static with this; commenting it out
-        <link rel="stylesheet" href="{#% static "css/myprecinct.css" %#}"> -->
         <link rel="stylesheet" href="/static/css/myprecinct.css">
         <link rel="stylesheet" href="/static/css/font-awesome.css">
 
@@ -38,16 +36,23 @@
             <div class="col-lg-7">
                 <h1>MyPrecinct <span class="subtitle initial-hide"><span class="hidden-phone">- </span>410 Rose Hill - 8th CD - Fairfax Co, VA</span></h1>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5" id="address_search">
                 <form id="address-form">
                     <label for="search_address">Enter Your Address: </label>
                     <input id="search_address" type="text" />
-                    <button class="btn btn-primary" type="submit" onclick="show_address(); return false;">
+                    <button class="btn btn-primary" type="submit" onclick="show_address(); $('#address_search').hide(); return false;">
                         Submit
                     </button>
                 </form>
             </div>
+
+            <div class="col-lg-5" id="polling_place" style="display: none;">
+              <h3>Your polling place is:</h3>
+              <h4>Rose Hill Elementary School<br>
+              6301 Rose Hill Drive<br>
+              Alexandria, VA</h4>
             </div>
+
         </header>
 
     </div>
@@ -118,7 +123,7 @@
 
         <br />
 
-        <button class="btn btn-lg btn-danger navbtn">
+        <button class="btn btn-lg btn-danger navbtn" onclick="$('#address_search').show(); $('#polling_place').hide();">
             <span class="glyphicon glyphicon-edit"></span> Change Location
         </button>
     </div>
@@ -168,6 +173,8 @@
                     hidden_elements.each(function(e) {
                         $(this).slideDown(750);
                     });
+
+                    toggle_visibility('polling_place');
 
                     // Markers go here
 
