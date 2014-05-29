@@ -85,6 +85,11 @@ span.subtitle {
     text-align: right;
 }
 
+#polling_place {
+    text-align: right;
+    color: #fff;
+}
+
 #address-form label {
     color: #FFF;
 }

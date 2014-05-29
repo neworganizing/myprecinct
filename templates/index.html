@@ -37,12 +37,18 @@
       <div class="col-lg-7">
         <h1>MyPrecinct <span class="subtitle initial-hide"><span class="hidden-phone">- </span>410 Rose Hill - 8th CD - Fairfax Co, VA</span></h1>
       </div>
-      <div class="col-lg-5">
+      <div class="col-lg-5" id="address_search">
         <form id="address-form">
           <label for="search_address">Address</label>
           <input id="search_address" class="search_address" type="text" />
-          <button style="margin-bottom: 25px;" class="search_address btn btn-primary" type="submit" onclick="show_address(); return false;">Submit</button>
+          <button style="margin-bottom: 25px;" class="search_address btn btn-primary" type="submit" onclick="show_address(); $('#polling_place').show(); $('#address_search').hide(); return false;">Submit</button>
         </form>
+      </div>
+      <div class="col-lg-5" id="polling_place">
+        <h3>Your polling place is:</h3>
+        <h4>Rose Hill Elementary School<br>
+        6301 Rose Hill Drive<br>
+        Alexandria, VA</h4>
       </div>
       </div>
     </header>
@@ -91,11 +97,11 @@
         </p>
     </div>
 
-    <button id="commit-button" class="btn btn-lg btn-success navbtn" data-toggle="modal" data-target="#commit-vote">
-      <span class="glyphicon glyphicon-ok"></span> Commit to Vote
+    <button id="commit-button" class="btn btn-lg btn-info navbtn" data-toggle="modal" data-target="#commit-vote">
+       Commit to Vote
     </button>
     
-    <button class="btn btn-lg btn-info navbtn">Sign up to Help</button>
+    <button id="signup-button" class="btn btn-lg btn-info navbtn" data-toggle="modal" data-target="#signup-help">Sign up to Help</button>
     
     <button class="btn btn-lg btn-info navbtn">
       <i class="fa fa-facebook-square"></i> 
@@ -115,7 +121,7 @@
     <br />
 
     <button class="btn btn-lg btn-danger navbtn">
-      <span class="glyphicon glyphicon-edit"></span> Change Location
+      <span class="glyphicon glyphicon-edit" onclick="$('#polling_place').hide(); $('#address_search').show();"></span> Change Location
     </button>
   </div>
   </div>
@@ -151,6 +157,34 @@
   </div><!-- /.modal -->  
 
   <!-- End: Commit to Vote Modal -->
+
+  <!-- Sign up to Volunteer Modal -->
+
+  <div class="modal fade" id="signup-help">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3 class="modal-title">Sign up to Help</h3>
+        </div>
+        <div class="modal-body">
+          <p><h4>I would like to be a ... </h4> <br>
+            <button class="btn btn-lg btn-default navbtn" onclick="$(this).toggleClass('btn-default btn-success');">Canvasser</button>
+            <button class="btn btn-lg btn-default navbtn" onclick="$(this).toggleClass('btn-default btn-success');">Phonebanker</button>
+            <br>
+            <button class="btn btn-lg btn-default navbtn" onclick="$(this).toggleClass('btn-default btn-success');">Pollworker</button>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="update_vol_btn();" aria-hidden="true">
+              <span class="glyphicon glyphicon-ok"></span> Sign me up!
+          </button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->  
+
+  <!-- End: Sign up to Volunteer Modal -->
 
   </div> <!-- #mainbody -->
 
@@ -233,8 +267,14 @@
         }
 
         function update_commit_btn() {
-            $('#commit-button').html("You've Committed to Vote!");
+            $('#commit-button').html('<span class="glyphicon glyphicon-ok"></span> Committing to Vote!');
             $('#commit-vote modal-footer').hide();
+            $("#commit-button").toggleClass('btn-info btn-success');
+        }
+
+        function update_vol_btn() {
+            $('#signup-button').html('<span class="glyphicon glyphicon-ok"></span> Signed up to help!');
+            $("#signup-button").toggleClass('btn-info btn-success');
         }
     //-->
     </script>
