@@ -63,11 +63,19 @@ span.subtitle {
     height: 640px;
 }
 
-.search_address{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 5px 35px;
+form#address-form {
+    text-align: right;
+    padding-top: 15px;
+}
+
+form#address-form input {
+    padding: 5px;
+    width: 16em;
     display: inline-block;
+}
+
+form#address-form label {
+    color: #FFF;
 }
 
 .btn-xl {
@@ -81,19 +89,6 @@ span.subtitle {
     width: 100%;
 }
 
-#address-form {
-    text-align: right;
-}
-
-#polling_place {
-    text-align: right;
-    color: #fff;
-}
-
-#address-form label {
-    color: #FFF;
-}
-
 .initial-hide {
     display: none;
 }
@@ -103,11 +98,21 @@ span.subtitle {
         text-align: center;
     }
 
+    header h1 {
+        margin: 0.25em 0;
+        line-height: 100%;
+    }
+
     #menu {
         margin-left: 0px;
         height: auto;
     }
-}
+
+    form#address-form {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
 
 @media (max-width: 768px) {
     .hidden-phone {
@@ -116,5 +121,29 @@ span.subtitle {
 
     #map {
         height: 320px;
+    }
+
+    header {
+        font-size: 8pt;
+    }
+
+    header h1 {
+        font-size: 20pt;
+    }
+
+    .btn {
+        padding: 3px 5px;
+    }
+}
+
+@media (max-width: 605px) {
+    form#address-form label {
+        display: block;
+    }
+}
+
+@media (max-width: 460px) {
+    form#address-form input {
+        width: 100%;
     }
 }
